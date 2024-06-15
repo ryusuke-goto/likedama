@@ -9,6 +9,11 @@
 @import "header";
 @import "footer";
 
+.back_color {
+    background-color: white;
+}
+
 p {
     font-size: 16px;
 }
+
