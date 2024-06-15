@@ -83,6 +83,6 @@ test:
 production:
   <<: *default
   host: <%= ENV["RENDER_DB_HOSTNAME"] %>
-  database: likedama_production
-  username: likedama
+  database: likedama_db
+  username: likedama_db_user
   password: <%= ENV["RENDER_DB_PASSWORD"] %>
