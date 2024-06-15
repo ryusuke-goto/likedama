@@ -7,13 +7,13 @@
     <div class="explanation">
       <p>step1: ユーザー登録をすると、登録時にランダムに割り当てられる！</p>
       <p>step2: 掲示板を見に行くとバズりたい思いだけ強い一つの投稿が！</p>
-      <p>step2: いいねを押してあげることで、あなたの戦闘力分いいねが加算される！</p>
+      <p>step3: いいねを押してあげることで、あなたの戦闘力分いいねが加算される！</p>
       <p>※ゲストログインすると戦闘力は1固定です。</p>
     </div>
     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
       <ul class='flex justify-center'>
         <li class='btn'>
-          <%= link_to 'ユーザー登録はこちら', '#', class: 'nav-link dropdown-toggle', id: 'header-board-menu' %>
+          <%= link_to 'ユーザー登録はこちら', new_user_registration_path, class: 'nav-link dropdown-toggle', id: 'header-board-menu' %>
         </li>
         <li class='btn'>
           <%= link_to 'ゲストユーザーでログイン', '#', class: 'dropdown-item' %>
