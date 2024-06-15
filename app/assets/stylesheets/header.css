@@ -1,0 +1,14 @@
+.brand {
+    color: white;
+    width: 100px;
+}
+
+.navbar {
+    background-color: green;
+    color: white;
+}
+
+.nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+}
