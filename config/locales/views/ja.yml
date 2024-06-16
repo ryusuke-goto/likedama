@@ -1,0 +1,29 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+    label:
+      email: メールアドレス
+      password: パスワード
+  sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      to_register_page: 登録ページへ
+      password_forget: パスワードをお忘れの方はこちら
+      guest_link: ゲストユーザーでログイン
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+      characters_minimum: 文字以上
+      link: ユーザー登録はこちら
+  header:
+    title: いいね玉
+    login: ログイン
+    logout: ログアウト
+    diary_index: 日記を見に行く
+    create_diary: 日記作成
+    profile: プロフィール

@@ -11,7 +11,12 @@
   </head>
 
   <body class="flex flex-col min-h-screen back_color">
-    <%= render 'shared/header' %>
+    <% if current_user %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>">
         <%= message %>
