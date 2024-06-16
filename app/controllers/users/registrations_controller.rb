@@ -14,8 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do |user|
       if user.persisted?
         # ユーザーが正常に作成された場合
-        random_buff = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].sample
-        Buff.create(user_id: user.id, sum_buff: random_buff)
+        @buff = user.buff
       end
     end 
   end

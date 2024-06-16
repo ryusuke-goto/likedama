@@ -9,6 +9,15 @@
 @import "header";
 @import "footer";
 
+.alert-notice {
+    background-color: rgb(17, 203, 141);
+    color: black;
+  }
+  
+  .alert-alert {
+      background-color: orange;
+      color: black;
+  }
 
 .container {
     text-align: center;

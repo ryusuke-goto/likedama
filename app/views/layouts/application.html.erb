@@ -12,6 +12,11 @@
 
   <body class="flex flex-col min-h-screen back_color">
     <%= render 'shared/header' %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render 'shared/footer' %>
   </body>
