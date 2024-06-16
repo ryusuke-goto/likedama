@@ -15,7 +15,7 @@ class Users::SessionsController < Devise::SessionsController
         # ユーザーが正常に作成された場合
         @buff = user.buff
       end
-    end 
+    end
   end
 
   # DELETE /resource/sign_out
@@ -27,9 +27,13 @@ class Users::SessionsController < Devise::SessionsController
     user = User.guest
     @buff = user.guest_buff
     sign_in user
-    redirect_to root_path, success: "ゲストユーザーとしてログインしました。"
+    redirect_to diaries_path, notice: "ゲストユーザーとしてログインしました。"
   end
 
+  #ログイン後のリダイレクト先
+  def after_sign_in_path_for(resource)
+    diaries_path
+  end 
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
