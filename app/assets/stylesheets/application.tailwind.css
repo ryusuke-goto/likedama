@@ -9,6 +9,12 @@
 @import "header";
 @import "footer";
 
+
+.container {
+    text-align: center;
+    font-size: 24px;
+}
+
 .back_color {
     background-color: white;
 }
