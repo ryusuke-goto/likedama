@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_one :buffs, dependent: :destroy
+  has_one :buff, dependent: :destroy
   has_many :diaries, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_diaries, through: :likes, source: :diary
 
   validates :name, presence: true, length: { maximum: 255 }
 
@@ -26,5 +28,18 @@ class User < ApplicationRecord
 
   def guest_buff
     Buff.find_or_create_by!(user_id: id)
+  end
+
+  def create_like(diary)
+    like = Like.new(user_id: id, diary_id: diary.id)
+    like.count += buff.sum_buff
+    like.save!
+  end
+
+  def update_like(like_id)
+    like = Like.find_by(id: like_id)
+    like.count += buff.sum_buff
+    puts "更新された値は#{like.count}"
+    like.save!
   end
 end
