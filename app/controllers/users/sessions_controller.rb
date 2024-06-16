@@ -9,14 +9,26 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super do |user|
+      if user.persisted?
+        # ユーザーが正常に作成された場合
+        @buff = user.buff
+      end
+    end 
+  end
 
   # DELETE /resource/sign_out
   # def destroy
   #   super
   # end
+
+  def guest_sign_in
+    user = User.guest
+    @buff = user.guest_buff
+    sign_in user
+    redirect_to root_path, success: "ゲストユーザーとしてログインしました。"
+  end
 
   # protected
 
