@@ -9,6 +9,8 @@
 @import "header";
 @import "footer";
 
+@import "font-awesome";
+
 .alert-notice {
     background-color: rgb(17, 203, 141);
     color: black;

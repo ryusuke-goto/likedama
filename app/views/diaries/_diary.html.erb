@@ -2,24 +2,25 @@
 <div class="col-sm-12 col-lg-4 mb-3 px-3.5">
   <div id="diary-id-<%= diary.id %>">
     <div class="card w-96 bg-base-100 shadow-xl">
-        <%= image_tag "diary_placeholder.png", class: "card-img-top", width: "100", height:"100" %>
-        <div class="card-body">
-            <div class="d-flex">
-                <h2 class="card-title">
-                    <%= link_to diary.title, '#' %>
-                </h2>
-                <div class='ms-auto'>
-                    <%= link_to '#', id: 'button-edit-#{diary.id}' do %>
-                        <i class="bi bi-pencil-fill"></i>
-                    <% end %>
-                    <%= link_to '#', id: 'button-delete-#{diary.id}', method: :delete, data: {confirm: '削除しますか'} do %>
-                        <i class="bi bi-trash-fill"></i>
-                    <% end %>
-                </div>
-                <div class="card-text">
-                    <p><%= diary.body %></p>
-                </div>
+        <div class="flex">
+          <%= image_tag "diary_placeholder.png", class: "card-img-top", width: "100", height:"100" %>
+        </div>
+        <div class="card-body items-center text-center">
+            <h2 class="card-title">
+                <%= link_to diary.title, '#' %>
+            </h2>
+            <div class="card-text">
+                <p><%= diary.body %></p>
             </div>
+            <% if Like.record_find(user: current_user.id, diary: diary.id) %>
+                <%= link_to like_path(Like.record_find(user: current_user.id, diary: diary.id)), data: { turbo_method: :patch }, id: 'like-#{diary.id}' do %>
+                    <%= Like.likes_count(diary.id) || 0 %>
+                <% end %>
+            <% else %>
+                <%= link_to likes_path(diary_id: diary.id), data: { turbo_method: :post }, id: 'like-#{diary.id}' do %>
+                    <%= Like.likes_count(diary.id) || 0 %>
+                <% end %>
+            <% end %>
             <ul class="list-inline">
                 <li><i class="bi bi-person"></i><%= diary.user.name %></li>
                 <li><i class="bi bi-calendar"></i><%= l diary.created_at, format: :short %></li>
