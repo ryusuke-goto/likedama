@@ -10,19 +10,11 @@
             <div class="card-text">
                 <p><%= diary.body %></p>
             </div>
-            <div class="flex">
-                <% if Like.record_find(user: current_user.id, diary: diary.id) %>
-                    <%= link_to like_path(Like.record_find(user: current_user.id, diary: diary.id)), data: { turbo_method: :patch }, id: 'like-#{diary.id}' do %>
-                      <i class="fa-solid fa-heart"></i>  
-                      <%= Like.likes_count(diary.id) || 0 %>
-                    <% end %>
-                <% else %>
-                    <%= link_to likes_path(diary_id: diary.id), data: { turbo_method: :post }, id: 'like-#{diary.id}' do %>
-                      <i class="fa-solid fa-heart"></i>
-                      <%= Like.likes_count(diary.id) || 0 %>
-                    <% end %>
-                <% end %>
-            </div>
+            <% if Like.record_find(user: current_user.id, diary: diary.id) %>
+                <%= render 'likes/update_like', { diary: diary } %>
+            <% else %>
+                <%= render 'likes/create_like', { diary: diary } %>
+            <% end %>
             <ul class="list-inline">
                 <li><i class="bi bi-person"></i><%= diary.user.name %></li>
                 <li><i class="bi bi-calendar"></i><%= l diary.created_at, format: :short %></li>
