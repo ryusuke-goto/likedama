@@ -22,6 +22,7 @@ ja:
       link: ユーザー登録はこちら
   header:
     title: いいね玉
+    user_power: あなたの戦闘力は
     login: ログイン
     logout: ログアウト
     diary_index: 日記を見に行く
