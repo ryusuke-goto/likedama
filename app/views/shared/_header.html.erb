@@ -4,6 +4,12 @@
 
     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
       <ul class='ms-auto flex justify-between'>
+        <li class='nav-item flex'>
+          <%= t('header.user_power') %>
+          <h1>
+            <%= current_user.buff.sum_buff %>
+          </h1>
+        </li>
         <li class='nav-item'>
           <%= link_to t('header.diary_index'), diaries_path, class: '' %>
         </li>

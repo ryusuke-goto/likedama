@@ -10,8 +10,6 @@
 @import "footer";
 @import "diary";
 
-@import "font-awesome";
-
 .alert-notice {
     background-color: rgb(17, 203, 141);
     color: black;
