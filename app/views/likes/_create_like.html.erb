@@ -1,8 +1,8 @@
-<%= link_to likes_path(diary_id: diary.id), data: { turbo_method: :post }, id: "like-#{diary.id}" do %>
-    <div class="flex">    
+<%= link_to likes_path(diary_id: diary.id), data: { turbo_method: :post } do %>
+    <div class="flex justify-center">
+      <div>
         <i class="fa-solid fa-heart"></i>
-        <div id="like-#{diary.id}">
-            <%= Like.likes_count(diary.id) || 0 %>
-        </div>
+      </div>
+        <%= render 'likes/like', { diary: diary } %>
     </div>
 <% end %>

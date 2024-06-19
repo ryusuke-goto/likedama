@@ -10,11 +10,9 @@
             <div class="card-text">
                 <p><%= diary.body %></p>
             </div>
-            <% if Like.record_find(user: current_user.id, diary: diary.id) %>
-                <%= render 'likes/update_like', { diary: diary } %>
-            <% else %>
+            <div class="card-like">
                 <%= render 'likes/create_like', { diary: diary } %>
-            <% end %>
+            </div>
             <ul class="list-inline">
                 <li><i class="bi bi-person"></i><%= diary.user.name %></li>
                 <li><i class="bi bi-calendar"></i><%= l diary.created_at, format: :short %></li>

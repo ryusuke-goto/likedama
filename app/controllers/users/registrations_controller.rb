@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do |user|
       if user.persisted?
         # ユーザーが正常に作成された場合
-        @buff = user.buff
+        @buff = user.create_buff
       end
     end 
   end

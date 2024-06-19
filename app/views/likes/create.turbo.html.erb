@@ -1,5 +1,0 @@
-<%= turbo_stream.replace "like-#{diary.id}" do %>
-    <div id="like-#{diary.id}">
-        <%= Like.likes_count(diary.id) || 0 %>
-    </div>
-<% end %>

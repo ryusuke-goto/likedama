@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
     super do |user|
       if user.persisted?
         # ユーザーが正常に作成された場合
-        @buff = user.buff
+        @buff = user.login_buff
       end
     end
   end
