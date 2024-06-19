@@ -1,9 +1,8 @@
-
-<%= link_to like_path(Like.record_find(user: current_user.id, diary: diary.id)), data: { turbo_method: :patch } do %>
-    <div class="flex">
-        <i class="fa-solid fa-heart"></i>  
-        <div id="like-#{diary.id}">
-            <%= Like.likes_count(diary.id) || 0 %>
-        </div>
+<%= link_to likes_path(diary_id: diary.id), data: { turbo_method: :post } do %>
+    <div class="flex justify-center">
+      <div>
+        <i class="fa-solid fa-heart"></i>
+      </div>
+        <%= render 'likes/like', { diary: diary } %>
     </div>
 <% end %>

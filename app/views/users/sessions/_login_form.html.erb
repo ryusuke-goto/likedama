@@ -24,9 +24,12 @@
 -->
 
     <div class="actions">
-      <%= f.submit t('sessions.new.login') %>
+      <button class="btn btn-ghost">
+        <%= f.submit t('sessions.new.login') %>
+      </button> 
     </div>
   <% end %>
-
-  <%= render "users/shared/links" %>
+  <button class="btn">
+    <%= render "users/shared/links" %>
+  </button>
 </div>

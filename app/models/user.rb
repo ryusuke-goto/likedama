@@ -19,27 +19,36 @@ class User < ApplicationRecord
     end
   end
 
-  def buff
-    Buff.find_or_create_by!(user_id: id) do |buff|
-      random_buff = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].sample
-      buff.sum_buff = random_buff
-    end
+  def create_buff
+    buff = Buff.new(user_id: id)
+    random_buff = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 500, 1000, 10000].sample
+    buff.sum_buff = random_buff
+    buff.save!
+  end
+
+  def login_buff
+    buff = Buff.find_by!(user_id: id)
+    random_buff = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 500, 1000, 10000].sample
+    buff.sum_buff = random_buff
+    buff.save!
   end
 
   def guest_buff
-    Buff.find_or_create_by!(user_id: id)
+    buff = Buff.find_or_create_by!(user_id: id)
+    random_buff = [10, 20, 30].sample
+    buff.sum_buff = random_buff
+    buff.save!
   end
 
-  def create_like(diary)
-    like = Like.new(user_id: id, diary_id: diary.id)
-    like.count += buff.sum_buff
-    like.save!
-  end
+  # def create_like(diary)
+  #   like = Like.new(user_id: id, diary_id: diary.id)
+  #   like.count += buff.sum_buff
+  #   like.save!
+  # end
 
-  def update_like(like_id)
-    like = Like.find_by(id: like_id)
+  def like(diary)
+    like = Like.find_or_create_by!(user_id: id, diary_id: diary.id)
     like.count += buff.sum_buff
-    puts "更新された値は#{like.count}"
     like.save!
   end
 end
